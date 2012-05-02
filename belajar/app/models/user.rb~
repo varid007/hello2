@@ -1,0 +1,24 @@
+class User < ActiveRecord::Base
+  has_many :products
+  has_many :articles
+  has_many :countries
+
+  def show_full_name
+    
+    "#{self.first_name} #{self.last_name}"
+  end
+  validates :first_name, :presence => true, 
+                         :length => {:minimum => 1, :maximum => 20}
+  
+  validates :last_name, :presence => true, 
+                        :length => {:minimum => 1, :maximum => 20}
+
+  validates :email, :presence => true,
+                    :length => {:minimum => 3, :maximum => 254},
+                    :uniqueness => true,
+                    :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
+
+  validates :username, :presence => true, 
+                       :length => {:minimum => 1, :maximum => 254},
+                       :uniqueness => true
+end

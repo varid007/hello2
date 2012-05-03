@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 
   has_many :shared_articles,
            :class_name => "Article",
-           :foreign_key => "user_id"
-           :"title like '%share%'"
+           :foreign_key => "user_id",
+           :condition =>"title like '%share%'"
          
   def show_full_name
     

@@ -1,0 +1,16 @@
+<html>
+<head>
+  <title>Ruby On Rails</title>
+</head>
+
+<body>
+	<%= form_for @article do |f| %>
+	  Title   : <br/><%= f.text_field :title %> <br/>
+	  Article :<br/> <%= f.text_area :body %><br/>
+	  Rating : <%= f.text_field :rating %><br/>
+	  <%= f.submit "Submit" %>
+	<% end %>
+	<%= link_to "Back to Index",articles_path%>
+</body>
+
+</html>

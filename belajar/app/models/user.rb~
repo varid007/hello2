@@ -3,6 +3,11 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :countries
 
+  has_many :shared_articles,
+           :class_name => "Article",
+           :foreign_key => "user_id"
+           :"title like '%share%'"
+         
   def show_full_name
     
     "#{self.first_name} #{self.last_name}"

@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Ruby On Rails</title>
+</head>
+
+<body>
+<%= link_to "Add Article",new_article_path %>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Rating</th>
+      <th>Manage</th>
+    </tr>
+  
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.body %></td>
+        <td><%= article.rating %></td>
+        <td><%= link_to "show", article_path(article.id) %> | <%= link_to "edit", edit_article_path(article.id) %>| <%= link_to "delete", article_path(article.id),method: :delete  %></td>
+      </tr>
+    <% end %>
+  
+  </table>
+</body>
+
+</html>

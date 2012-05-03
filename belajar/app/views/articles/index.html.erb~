@@ -1,0 +1,11 @@
+<html>
+<head>
+  <title>Ruby On Rails</title>
+</head>
+<body>
+  <ul>
+    <% Articles.each do |p|%>
+    <li><%= p.article  %></li>
+  </ul>
+</body>
+</html>

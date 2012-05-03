@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   end  
   
   def create
-    @article = Article.new(params[:id])
+    @article = Article.new(params[:article])
     if @article.save
     
     redirect_to articles_path

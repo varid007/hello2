@@ -1,9 +1,15 @@
+<html>
+<head>
+  <title>Ruby On Rails</title>
+</head>
+
+<body>
 <%= form_for @article do |f| %>
 
 <% if @article.errors.any? %>
-  <div id="errorExplanation">
+  <div >
     <h2>
-       <%= pluralize(@article.errors.count, "error") %> Please title or body was Error:
+       <%= pluralize(@article.errors.count, "error") %> title or body was Error:
     </h2>
     <ul>
       <% @article.errors.full_messages.each do |msg| %>
@@ -20,3 +26,7 @@
 	  <%= f.submit "Submit" %>
 	  <%= link_to "Back to Index",articles_path%>
 	<% end %>
+
+</body>
+
+</html>

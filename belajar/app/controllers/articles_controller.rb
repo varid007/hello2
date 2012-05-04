@@ -7,9 +7,10 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(params[:article])
     if @article.save
-    
+    flash[:notice] = 'Article was succesful create' 
     redirect_to articles_path
     else
+    flash[:error] = 'Article was Error'
     render :new
     end
   end 

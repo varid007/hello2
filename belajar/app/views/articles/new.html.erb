@@ -4,18 +4,18 @@
 </head>
 
 <body>
-	<%= form_for @article do |f| %>
-	<% if @article.errors.any? %>
+  <%= form_for @article do |f| %>
+    <% if @article.errors.any? %>
 	  <%= pluralize(@article.errors.count, "Error") %> 
       <% @article.errors.full_messages.each do |msg| %>
-      <%= msg%>
+        <%= msg%>
       <% end %>
     <% end %>
 	  Title   : <br/><%= f.text_field :title %> <br/>
 	  Article :<br/> <%= f.text_area :body %><br/>
 	  Rating : <%= f.text_field :rating %><br/>
-	  <%= f.submit "Submit" %>
-	<% end %>
+	<%= f.submit "Submit" %>
+  <% end %>
 	<%= link_to "Back to Index",articles_path%>
 </body>
 

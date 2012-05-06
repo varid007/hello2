@@ -3,6 +3,20 @@
   Title : <%= @article.title %><br/>
   Body : <%= @article.body %><br/>
   Rating : <%= @article.rating %><br/>
+  Comment :<br/>
+  <% @comments.each do |comment| %>
+   <br /> <%= comment.content %><br />
+
+  <% end %>
+  
+  <% unless (current_user.nil?) %>
+    <%= form_for @comment, :action=>"show", :controller=>"comments" do |f| %>
+      <%= f.text_area :content %>
+      <%= f.hidden_field :article_id, :value => @article.id %>
+      <%= submit_tag "comment" %>
+    <% end %>
+  <% end %> 
+  
 <%= link_to "back",articles_path %>
 </body>
 </html>

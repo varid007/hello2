@@ -14,6 +14,10 @@
 	  Title   : <br/><%= f.text_field :title %> <br/>
 	  Article :<br/> <%= f.text_area :body %><br/>
 	  Rating : <%= f.text_field :rating %><br/>
+	  
+	  <% user=User.find_by_email(current_user.email) %>
+	  <%= f.hidden_field :user_id, :value => user.id %>
+
 	<%= f.submit "Submit" %>
   <% end %>
 	<%= link_to "Back to Index",articles_path%>

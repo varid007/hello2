@@ -14,12 +14,12 @@
       <th>Manage</th>
     </tr>
   
-    <% @articles.each do |article| %>
+    <% @article.each do |article| %>
       <tr>
         <td><%= article.title %></td>
         <td><%= article.body %></td>
         <td><%= article.rating %></td>
-        <td><%= link_to "show", article_path(article.id) %> | <%= link_to "edit", edit_article_path(article.id) %>| <%= link_to "delete", article_path(article.id),method: :delete  %></td>
+        <td><%= link_to "show", article_path(article.id) %> | <%= link_to "edit", edit_article_path(article.id) %>| <%= link_to "delete", article_path(article.id), confirm:'yakin Hapus ?',method: :delete  %></td>
       </tr>
     <% end %>
   

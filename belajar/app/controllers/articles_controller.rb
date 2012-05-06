@@ -1,11 +1,16 @@
 class ArticlesController < ApplicationController
+  before_filter :require_login, :only => [:new ,:edit, :delete, :update,:destroy]
+  before_filter :your_article, :only => [:edit, :delete, :update,:destroy]
+  before_filter :find_article, :only => [:show, :edit, :delete, :update,:destroy]
   
   def index
-    @articles = Article.all
+    @article = Article.all
   end  
   
   def create
-    @article = Article.new(params[:article])
+    
+    @article=Article.new(params[:article])
+    
     if @article.save
     flash[:notice] = 'Article was succesful create' 
     redirect_to articles_path
@@ -21,31 +26,46 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-    @article = Article.find_by_id(params[:id])
+    
   end
   
   def show
-    @article = Article.find_by_id(params[:id])
-  
+    @comments=@article.comments
+    @comment=@article.comments.new
   end
   
   def update
-    @article = Article.find(params[:id])
+    
     
     if @article.update_attributes(params[:article])
-    
+       flash[:notice] = 'Article was succesful Update' 
        redirect_to articles_path
        else
-       flash[:notice] = 'User was Error.'
+       
        render :edit
     end
     
   end
   
   def destroy
-    @article = Article.find_by_id(params[:id])
     @article.destroy
     redirect_to articles_path
   end
   
+  def find_article
+    @article = Article.find_by_id(params[:id])
+    if @article.nil?
+      flash[:notice] = 'Error Detected'
+      redirect_to :controller => :articles, :action =>"new"
+    end
+  end
+  
+  def your_article
+    user=User.find_by_email(current_user.email)
+    unless @article.user_id==user.id
+       flash[:notice]="its not your article"
+       redirect_to articles_path
+      
+    end
+  end
 end

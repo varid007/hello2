@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
   before_filter :require_login, :only => [:new ,:edit, :delete, :update,:destroy]
-  before_filter :your_article, :only => [:edit, :delete, :update,:destroy]
   before_filter :find_article, :only => [:show, :edit, :delete, :update,:destroy]
+  before_filter :your_article, :only => [:edit, :delete, :update,:destroy]
+  
   
   def index
     @article = Article.all
@@ -36,7 +37,6 @@ class ArticlesController < ApplicationController
   
   def update
     
-    
     if @article.update_attributes(params[:article])
        flash[:notice] = 'Article was succesful Update' 
        redirect_to articles_path
@@ -62,7 +62,7 @@ class ArticlesController < ApplicationController
   
   def your_article
     user=User.find_by_email(current_user.email)
-    unless @article.user_id==user.id
+    unless @article.user_id == user.id
        flash[:notice]="its not your article"
        redirect_to articles_path
       

@@ -1,16 +1,18 @@
 class CommentsController < ApplicationController
-  def new
-    @comment=Comment.new
-    redirect_to :controller => :articles, :action => :show
-  end 
-  
+ 
   def create
     @comment = Comment.new(params[:comment]) 
-   # @article = Article.find_by_id(params[:comment])
+   # @article = Article.find_by_id(params[:comment][:article_id])
+   # @comments=@article.comment
+    #if @comment.save
+    #  flash[:notice]= "Comment posted"
+      #di bawah direct di ganti
+   #   redirect_to article_path(@article)
+  #  end
     if @comment.save
-      flash[:notice]= "Comment posted"
-      redirect_to articles_path
+      format.html { redirect_to(article_path(article), :notice => 'Comment was successfully created.') }
+      format.js
     end
-     
+
   end
 end

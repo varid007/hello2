@@ -61,6 +61,10 @@ Belajar::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   #match ':controller(/:action(/:id(.:format)))'
   #get "sign_up" =>
+  namespace :admin do
+    resources :articles
+  end
+  
   get "log_in" => "sessions#new", :as => "log_in" 
   get "log_out" => "sessions#destroy", :as => "log_out"
   

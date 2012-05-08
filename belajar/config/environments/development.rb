@@ -39,5 +39,8 @@ Belajar::Application.configure do
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
-  
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[Error detected]",
+    :sender_address => %{"notifier" <notifier@example.com>},
+    :exception_recipients => %w{variestie@gmail.com}
 end

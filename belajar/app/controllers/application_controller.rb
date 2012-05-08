@@ -17,5 +17,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end  
   
-  
+   rescue_from NoMethodError, :with => :record_not_found
+
+ 
+   def record_not_found
+    render "/public/500.html", :status => 500, :layout => false
+   end
 end

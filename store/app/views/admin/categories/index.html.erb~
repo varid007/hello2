@@ -1,0 +1,17 @@
+<%= link_to "Add Category", new_admin_category_path %>
+<table>
+    <tr>
+      <th>Name</th>
+      <th>Parent Category</th>
+      <th>Manage</th>
+    </tr>
+  
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= category.parent_id %></td>
+        <td><%= link_to "Show", admin_category_path(category.id) %> | Edit | Delete</td>
+      </tr>
+    <% end %>
+  <%- link_to "Back",admin_categories_path %>
+  </table>

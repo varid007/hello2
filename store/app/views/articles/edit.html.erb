@@ -1,0 +1,16 @@
+<%= form_for @article do |f| %>
+ <table >
+  <tr>
+    <td><%= f.label :title %></td>
+    <td>: <%= f.text_field :title, :size => 15 %> </td>
+  </tr>
+  <tr>
+    <td><div ><%= f.label :body %></div></td>
+    <td><%= f.text_area :body %></td>
+  </tr>
+ 
+  <tr>
+    <td><%= f.submit %> </td>
+    <td><%= link_to "Back",articles_path %> </td>
+  </tr>
+<% end %>

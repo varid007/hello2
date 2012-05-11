@@ -1,0 +1,45 @@
+
+<%= form_for @user do |f| %>
+ <table >
+  <tr>
+    <td><%= f.label :email %></td>
+    <td>: <%= f.text_field :email, :size => 15 %> </td>
+  </tr>
+   
+  <tr>
+    <td><%= f.label :name %></td>
+    <td>: <%= f.text_field :name, :size => 15 %> </td>
+  </tr>
+  <tr>
+    <td><%= f.label :address %></td>
+    <td>: <%= f.text_area :address, :rows => "2", :cols => "40"%> </td>
+  </tr>
+  <tr>
+    <td><%= f.label :phone %></td>
+    <td>: <%= f.text_field :phone, :size => 15 %> </td>
+  </tr>
+  <tr>
+   <td><%= f.label :birthday %></td>
+   <td>: <%= f.date_select(:birthday ,:star_year => 1970) %> </td>
+  </tr>
+  <tr>
+    <td><%= f.label :gender %></td>
+    <td>:  <%= f.radio_button(:gender, "1") %> Male
+              <%= f.radio_button(:gender, nil ) %> Female  </td>
+  </tr>
+  <tr>
+    <td><%= f.label :facebook %></td>
+    <td>: <%= f.text_field :facebook,:size => 15 %> </td>
+  </tr>
+  <tr>
+    <td><%= f.label :blog %></td>
+    <td>: <%= f.text_field :blog,:size => 15  %> </td>
+  </tr>
+  
+  <tr>
+    <td><%= f.submit "Save"%></td>
+    
+    
+  </tr>
+<% end %>  
+ </table>

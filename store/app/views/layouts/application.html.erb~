@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Store</title>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" %>
+  <%= javascript_include_tag "jquery-rails.js" %>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="user_nav">  
+     <%= raw(welcome_text) %>
+  
+    </div>
+ <center><h1>Welcome to my store</h1></center>
+   
+   <center> Home | <%= link_to "Product", products_path %> | <%= link_to "Article", articles_path %> | <%= link_to "Category", admin_categories_path %> </center><br/>
+   <table border="1" align="center" width="1000">
+	 <tr>
+       <td width="25%">sidebar</td>
+       <td> <%= flash[:notice]|| flash[:error]%><%= yield %></td>
+     </tr>
+   </table>
+
+
+</body>
+</html>

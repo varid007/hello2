@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Store</title>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" %>
+  <%= javascript_include_tag "jquery-rails.js" %>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="user_nav">  
+     <%= raw(welcome_text) %>
+  
+    </div>
+ <center><h1>Welcome to my store</h1></center>
+   <hr>
+    <%= link_to "Home", home_index_path %> | <%= link_to "Product", products_path %> | <%= link_to "Article", articles_path %> | 
+    <% unless current_user.nil? %>
+       <% if current_user.is_admin %>
+         <%= link_to "Categories", admin_categories_path %>  |
+       <% end %>
+     <% end %>
+   <table  align="center" width="1000">
+	 <tr>
+       <td width="25%">
+		   <% if (current_user.nil?) %>
+		     <%= render :partial => "home/login"%>
+		    <% else%>
+		    <%= render :partial => "home/menu_user"%><br/>
+		     </td>
+		   <% end %>
+       <td > <p class="error"><%= flash[:notice]|| flash[:error]%></p><br/><%= yield %></td>
+     </tr>
+   </table>
+
+
+</body>
+</html>

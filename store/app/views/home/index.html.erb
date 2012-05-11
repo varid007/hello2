@@ -1,0 +1,41 @@
+<p><b>Listing Products</b></p>
+</hr>
+<% i=1 %>
+<table>
+  <tr>
+	<% @products.each do |product| %>
+	 <% if i <= 3 %>
+	   <td width="300px" id="table-product">
+	     <b>Name : </b><%= product.name %><br>
+	     <b>Price($) : </b><%= product.price %><br>
+	     <%= link_to "Show Details", product_path(product.id) %>
+	   </td>
+ 	 <% else %>
+ 	   </tr>
+ 	   <tr>
+        <td>
+	      Name : <%= product.name %><br>
+	      Price : <%= product.price %><br>
+	      <%= link_to "Show Details", product_path(product.id) %>
+	    </td>	  
+       </tr><% i+=1 %>
+     <% end %>
+     
+  <% end %>
+</table> 
+<br />
+<hr />
+<p><b>Listing Articles</b></p>
+<hr />
+
+<table>
+  <tr>
+	<% @articles.each do |article| %>
+	<td>
+	  <b><%= article.title %></b><br />
+	  <%= truncate(article.body, :length => 150) %> <br /><br />
+	  <%= link_to "Read More", article_path(article.id) %><br /><br/><hr> <br />
+	</td>
+  </tr>
+  <% end %>
+</table>         

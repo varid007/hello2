@@ -1,0 +1,33 @@
+<h1>Edit Product</h1>
+
+<%= form_for @product do |f| %>
+ <table >
+  <tr>
+    <td><%= f.label :name, "Name" %></td>
+    <td>: <%= f.text_field :name, :size => 15 %> </td>
+  </tr>
+   <tr>
+    <td><%= f.label :description, "Description" %></td>
+    <td>: <%= f.text_field :description, :size => 15 %> </td>
+  </tr>
+  <tr>
+    <td><%= f.label :price, "Price ($)"%></td>
+    <td>: <%= f.text_field :price, :size => 15 %> </td>
+  </tr>
+  
+  <tr>
+    <td><%= f.label :weight, "Weight" %></td>
+    <td>: <%= f.text_field :weight, :size => 15 %> </td>
+  </tr>
+  
+  <tr>
+    <td><%= f.label :category_id  %></td>
+    <td>: <%= f.select :category_id, @child_category, { :include_blank => false } %></td>
+  <tr/>
+  
+  <tr>
+    <td></td>
+    <td>: <%= f.submit "Add" %> </td>
+  </tr>
+<% end %>
+<%= link_to "Back", products_path %>

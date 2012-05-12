@@ -73,5 +73,6 @@ Store::Application.routes.draw do
   resources :articles
   resources :comments
   resources :products
+  resources :categories
   resources :home
 end

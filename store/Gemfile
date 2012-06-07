@@ -10,6 +10,12 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'recaptcha', :require => 'recaptcha/rails'
+gem 'simplecov'
+gem "multi_json", "~> 1.3.5"
+gem 'will_paginate', '~> 3.0'
+gem 'paperclip', :git => 'http://github.com/thoughtbot/paperclip.git'
+gem 'tinymce_hammer'
+gem 'prawnto_2',:require => 'prawnto'
 
 
 # Gems used only for assets and not required

@@ -24,7 +24,10 @@
     <td><%= f.label :category_id  %></td>
     <td>: <%= f.select :category_id, @child_category, { :include_blank => false } %></td>
   <tr/>
-  
+  <tr>
+  	<td></td>
+  	<td><%= f.file_field :photo %></td>
+  </tr>
   <tr>
     <td></td>
     <td>: <%= f.submit "Add" %> </td>

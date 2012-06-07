@@ -1,0 +1,28 @@
+
+<h1>List Article</h1>
+<%= link_to "Add Article",new_article_path %>
+<table>
+<tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>User</th>
+      <th>Comment</th>
+      <th>Manage</th>
+    </tr>
+     <hr>
+     <%if @articles_search.empty? %>
+     <p class="error">Article not found</p>
+     <% else %>
+<% @articles_search.each do |article| %>
+
+  <tr>
+        <td><%= article.title %></td>
+        <td><%= article.body %></td>
+        <td><%= article.user_id %></td>
+        <td><%= article.comments.count(article.id) %></td>
+		<td><%= link_to "Show",article_path(article.id) %> | <%= link_to "Edit",edit_article_path(article.id) %> | <%= link_to "delete", article_path(article.id), confirm:'yakin Hapus ?',method: :delete  %> </td>
+   </tr>
+<%end%>
+<% end %>
+ </table>
+<%= will_paginate @articles_search %>

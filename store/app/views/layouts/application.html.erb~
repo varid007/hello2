@@ -32,7 +32,7 @@
 		    <%= render :partial => "home/menu_user"%><br/>
 		     </td>
 		   <% end %>
-       <%= render :partial => "index"%><br/>
+      <%= render :partial => "categories/index"%><br/>
        <td > <p class="error"><%= flash[:notice]|| flash[:error]%></p><br/><%= yield %></td>
      </tr>
    </table>

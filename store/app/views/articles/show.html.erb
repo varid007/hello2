@@ -1,9 +1,10 @@
 <%= @article.id %></br>
-Body :<br/><%= @article.body %></br>
+Body :<br/><%= raw @article.body %></br>
 Created by : <%= @article.user_id %>
 <br/>
 <%= link_to "Back", articles_path %>
-
+<br></br>
+total comment :<%= @article.comments.count(@article.id) %>
 <!--bagian ini untuk menampilkan comment yang dimiliki oleh article tersebut -->
 <div id="comments">
   <%= render :partial => "comments", :locals => {:comments => @comments}  %>

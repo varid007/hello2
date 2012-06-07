@@ -3,6 +3,7 @@
 <%= link_to "Add Product", new_product_path %>
  <table>
     <tr>
+      <th>Gambar</th>
       <th>id</th>
       <th>Name</th>
       <th>Description</th>
@@ -13,22 +14,21 @@
       <th>Manage</th>
     </tr>
   
-    <% @products.each do |product| %>
+    <% @products_paging.each do |product| %>
       <tr>
+        <td><%= image_tag product.photo.url %></td>
         <td><%= product.id %></td>
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
         <td><%= product.weight %></td>
-        <td><%= product.user_id %></td>
-        <td>
-        <% unless (product.category.nil?)%>
-          <%= product.category.name %></td>
-        <% else %>
-          -
-        <% end %>
+        <td><%= product.user.name %></td>
+        <td><%= product.category.name %></td>
+      
+     
         <td><%= link_to "Show" ,product_path(product.id) %> |<%= link_to "Edit", edit_product_path(product.id) %> | <%= link_to "Delete", product_path(product.id), confirm:'Delete This Product ?',method: :delete %> </td>
         </tr>
     <% end %>
   
   </table>
+<%= will_paginate @products_paging %>

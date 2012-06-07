@@ -11,7 +11,7 @@
     <% @categories.each do |category| %>
       
         <td><%= category.name %></td>
-        
+        <td></td>
         <td></td>
         <td><%= link_to "Show", admin_category_path(category.id) %> | <%= link_to "Edit", edit_admin_category_path(category.id) %> | <%= link_to "delete", admin_category_path(category.id), confirm:'yakin Hapus ?',method: :delete %></td>
       </tr>

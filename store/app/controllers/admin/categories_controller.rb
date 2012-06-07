@@ -1,6 +1,6 @@
 class Admin::CategoriesController < Admin::ApplicationController
-  before_filter :require_admin_login, :only => [:index,:show, :edit, :update,:destroy]
-  before_filter :find_category, :only => [:edit,:update,:show, :edit,:update, :delete, :update,:destroy]
+#  before_filter :require_admin_login, :only => [:index,:show, :edit, :update,:destroy]
+  before_filter :find_category, :only => [:index,:edit,:update,:show, :edit,:update, :delete, :update,:destroy]
   
   
   def new
@@ -13,7 +13,9 @@ class Admin::CategoriesController < Admin::ApplicationController
     
   end
   def index
-    @categories = Category.all  
+    
+    @categories = Category.all
+  #  @category = Category.find(params[:id])
   end
   
   def create
@@ -52,6 +54,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   
   private
   def find_category
+    
     @parent_category = Category.where(["parent_id IS NULL"]).map{|x| [x.name, x.id ]}
     @category = Category.find_by_id(params[:id])
     if @category.nil?

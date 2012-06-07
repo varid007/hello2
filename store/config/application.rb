@@ -8,6 +8,7 @@ if defined?(Bundler)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
+ 
 
 module Store
   class Application < Rails::Application
@@ -44,5 +45,7 @@ module Store
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
   end
+  
 end

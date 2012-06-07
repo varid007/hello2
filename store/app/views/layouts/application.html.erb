@@ -2,41 +2,58 @@
 <html>
 <head>
   <title>Store</title>
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" %>
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js" %>
+ 
   <%= javascript_include_tag "jquery-rails.js" %>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+
+
+
   <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="960.css" />
   <%= csrf_meta_tags %>
+  <%= init_tinymce_hammer_if_required %>
 </head>
 <body>
-	<div id="user_nav">  
-     <%= raw(welcome_text) %>
-  
-    </div>
- <center><h1>Welcome to my store</h1></center>
-   <hr>
-    <%= link_to "Home", home_index_path %> | <%= link_to "Product", products_path %> | <%= link_to "Article", articles_path %> | 
-    <% unless current_user.nil? %>
-       <% if current_user.is_admin %>
-         <%= link_to "Categories", admin_categories_path %>  |
-       <% end %>
-     <% end %>
-   <table  align="center" width="1000">
-	 <tr>
-       <td width="25%">
-		   <% if (current_user.nil?) %>
-		     <%= render :partial => "home/login"%>
-		    <% else%>
-		    <%= render :partial => "home/menu_user"%><br/>
-		     </td>
-		   <% end %>
-      <%= render :partial => "categories/index"%><br/>
-       <td > <p class="error"><%= flash[:notice]|| flash[:error]%></p><br/><%= yield %></td>
-     </tr>
-   </table>
+	<div class="container_12">
+		<div class="grid_12 up_nav">
+			<div class="grid_5 omega"><%= raw(welcome_text) %></div>
+			<div class="grid_3  prefix_4 alpha"><%= render :partial =>"home/search_field" %></div>
+		</div>
+	    <div class="clear"></div>
+	    <div class="grid_12 header"><h1>Welcome to my store</h1></div>
+	 	<div class="clear"></div>
+	    <nav class="grid_12">
+	         <ul>
+	         	<li><%= link_to "Home", home_index_path %></li>
+	        	<li><%= link_to "Product", products_path %></li>
+	        	<li><%= link_to "Article", articles_path %></li>
+	        	<li><%= link_to "Categories", admin_categories_path %></li>
+	        	
+	         </ul> 
+	    </nav>
+	    <div class="clear"></div>  
+	   
+	    	<aside class="grid_3"> 
+	    	<% if (current_user.nil?) %>
+				<%= render :partial => "home/login"%>
+			<% else%>
+			    <%= render :partial => "home/menu_user"%><br/>
+			     
+			<% end %>
+	        <%= render :partial => "categories/index"%>
+	  		</aside>
+	  		
+	    <section class="grid_9"> 
+	    	<p class="grid_9 error"><%= flash[:notice]|| flash[:error]%></p>
+	    	<div class="clear"></div>
+	    	<%= yield %>
+	    </section>
+	    
+	    
+	    <div class="clear"></div>
+	    <footer class="grid_12"><p>Footer</p></footer>
 
-
+</div>
 </body>
 </html>

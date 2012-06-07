@@ -3,14 +3,15 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :comments
   
-    has_many :shared_articles,
-           :class_name => "Article",
-           :foreign_key => "user_id",
-           :conditions =>"title like '%share%'"
-           
   attr_accessor :password
   before_save :encrypt_password
   
+  
+  validates :name,      :presence => true, 
+                        :length => {:minimum => 1, :maximum => 20}
+  
+  validates :address,   :presence => true
+                        
   validates :password, :presence => {:on => :create},
                        :confirmation => true
   validates :email, :presence => true,
@@ -35,9 +36,6 @@ class User < ActiveRecord::Base
   
   def is_admin
     if self.email == "farid@gmail.com"
-      true
-    else
-      false
     end
   end
 end

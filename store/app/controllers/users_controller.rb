@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       if @user.save 
        
         flash[:notice] = 'Account was Created, Log in ?' 
-        redirect_to new_session_path, :notice => "Signed up!" 
+        redirect_to home_index_path, :notice => "Signed up!" 
       else 
         render :new 
       end 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
   def update
     if @user.update_attributes(params[:user])
-      flash[:notice] = 'Article was succesful Update' 
+      flash[:notice] = 'User was succesful Update' 
       redirect_to user_path
     else
       flash[:notice] = 'User faild Update' 
@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   
   def destroy
     @user.destroy
+    flash[:notice]="user has deleted"
     redirect_to users_path
   end
   private
